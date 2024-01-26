@@ -3,10 +3,15 @@ import App from './App.vue';
 import '@/assets/css/style.css';
 
 createApp(App).mount('#app');
-let menuBtn = document.querySelector('.header__logo');
 
-let mobileMenu = document.querySelector('.header__navigation');
+const menuBtn = document.querySelector('.header__logo');
+const mobileMenu = document.querySelector('.header__navigation');
+const calculatorBtn = document.querySelector('.calculator__btn');
 
-menuBtn.onclick = function() {
-    mobileMenu.classList.toggle('unvisible');
-};
+menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('visible');
+})
+
+calculatorBtn.addEventListener('click', () => {
+    window.orderDialog.showModal();
+});

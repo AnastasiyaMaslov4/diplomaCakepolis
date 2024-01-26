@@ -28,7 +28,7 @@
         <div class="calculator__div_mobile">
           <p class="calculator__div__price_mobile">Стоимость набора: {{price}} руб.</p>
         </div>
-        <button class="calculator__btn" type="button" onclick="window.orderDialog.showModal();">Заказать</button>
+        <button class="calculator__btn" type="button">Заказать</button>
       </form>
       <div class="calculator__div">
         <img :src="picture" class="calculator__div__pic" alt="Фото кексов">
@@ -57,28 +57,39 @@ export default {
   },
   methods: {
     getPrice() {
-            if(this.type == "vanilla") {
+            switch (this.type) {
+              case "vanilla":
                 this.price = 1000;
                 this.picture = require('@/assets/img/vanila.jpg');
-                }
-            else if(this.type == "red") {
+                break;
+              case "red":
                 this.price = 1200;
                 this.picture = require('@/assets/img/redb.jpg');
-                }
-            else if(this.type == "choko") {
+                break;
+              case "choko":
                 this.price = 1200;
                 this.picture = require('@/assets/img/choko.jpg');
-                }
-            else {
+                break;
+              case "berries":
                 this.price = 1300;
                 this.picture = require('@/assets/img/berries.jpg');
-                }
+                break;
+            };
         
-            if(this.size == 10) this.price *= 1.5;
-            else if(this.size == 15) this.price *= 2;
-            else if(this.size == 20) this.price *= 2.5;
+            switch (this.size) {
+              case '10':
+                this.price *= 1.5;
+                break;
+              case '15':
+                this.price *= 2;
+                break;
+              case '20':
+                this.price *= 2.5;
+                break;
+            };
         
             if(this.pack == "Подарочная") this.price += 200;
+
             return this.price;
         },
   },
@@ -88,6 +99,3 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-</style>
